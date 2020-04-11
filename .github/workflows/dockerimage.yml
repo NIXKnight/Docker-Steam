@@ -1,0 +1,16 @@
+name: Docker Image CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker Image
+      run: docker build . --file Dockerfile --tag "nixknight/steam"
+    - name: Push to Docker Hub Repository
+      env:
+        DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+        DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
+      run: |
+        docker login -u ${DOCKER_HUB_USERNAME} -p ${DOCKER_HUB_TOKEN}
+        docker push "nixknight/steam"
