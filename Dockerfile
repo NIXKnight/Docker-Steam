@@ -10,7 +10,7 @@ RUN set -x; \
     apt-get update; \
     apt-get dist-upgrade; \
     locale-gen; \
-    apt-get install -y locales dbus-x11 libgl1:i386 mesa-vulkan-drivers:i386 libgl1-mesa-glx:i386 libxcb-xfixes0:i386 libxcb-dri2-0:i386 mesa-vulkan-drivers firmware-amd-graphics firmware-amd-graphics:i386; \
+    apt-get install -y wget locales dbus-x11 libgl1:i386 mesa-vulkan-drivers:i386 libgl1-mesa-glx:i386 libxcb-xfixes0:i386 libxcb-dri2-0:i386 mesa-vulkan-drivers firmware-amd-graphics firmware-amd-graphics:i386; \
     sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen; \
     locale-gen; \
     wget http://media.steampowered.com/client/installer/steam.deb; \
